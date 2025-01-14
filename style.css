@@ -1,0 +1,25 @@
+#all-books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 32px;
+}
+
+.bookcard {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #232323;
+    padding: 24px;
+    gap: 16px;
+    border-radius: 16px;
+}
+
+.book-price {
+    color: rgb(255, 98, 98);
+    font-weight: 700;
+    font-size: 20px;
+    text-align: left;
+}

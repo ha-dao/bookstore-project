@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore</title>
+
+    <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/database.js"></script>
+    <script src="js/templates.js"></script>
 </head>
-<body>
-    <h1>My bookstore</h1>
-    <h2>not my hp</h2>
-    <h3>dadadda</h3>
+<body onload="init()">
+    <div id="wrapper">
+        <header>
+            <div class="content-size">
+                <h1>Bookstore - get your book here</h1>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <div class="content-size">
+                    <div id="all-books"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="content-size">
+                <p>&copy; 2025 Ha Dao | all rights reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
