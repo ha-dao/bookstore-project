@@ -15,6 +15,14 @@
     padding: 24px;
     gap: 16px;
     border-radius: 16px;
+
+    box-shadow: 0 0 4px 0 rgb(255, 255, 255, 0.8);
+}
+
+.book-cover {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
 }
 
 .book-price {
@@ -22,4 +30,68 @@
     font-weight: 700;
     font-size: 20px;
     text-align: left;
+}
+
+.price-likes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.basic-heart {
+    fill: none;
+    stroke: #ffffff;
+    width: 32px;
+    height: 32px;
+    stroke-width: 1px;
+    transition: all 300ms ease;
+    padding-left: 4px;
+}
+
+.basic-heart:hover {
+    fill: red;
+    stroke: red;
+    transform: scale(1.2);
+}
+
+.basic-heart-active {
+    fill: red;
+    stroke: red;
+}
+
+.comment-form {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+/* tablet */
+
+@media (max-width: 1200px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #all-books {
+        margin: 32px 16px;
+    }
+
+    .bookcard {
+        width: 40%;
+    }
+}
+
+/* mobile */
+
+@media (max-width: 900px) {
+    .bookcard {
+        width: 100%;
+    }
+
 }
