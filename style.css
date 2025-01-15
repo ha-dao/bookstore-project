@@ -60,9 +60,10 @@
     transform: scale(1.2);
 }
 
-.basic-heart-active {
+.liked {
     fill: red;
     stroke: red;
+    transform: scale(1.2);
 }
 
 .comment-form {

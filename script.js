@@ -1,48 +1,84 @@
-// initiazation on window load
 function init() {
+    loadFromLocalStorage('books');
     renderAllBooks();
+    setInitialLikes();
 }
 
-// show all books from object
 function renderAllBooks() {
-    let allBooks = document.getElementById('all-books');
+    let allBooks = document.getElementById("all-books");
     allBooks.innerHTML = "";
 
-    for (let bookIndex = 0; bookIndex < books.length; bookIndex++) {
-        allBooks.innerHTML += bookTemplate(books[bookIndex]);
+    for (let i = 0; i < books.length; i++) {
+        allBooks.innerHTML += bookTemplate(i);
     }
 }
 
-// show all comments for each book if comment exist
-function renderComments(comments) {
-    let commentsHTML = '';
-    if (comments.length === 0) {
-        commentsHTML = '<p>Keine Kommentare vorhanden.</p>';
-    } else {
-        for (let commentIndex = comments.length - 1; commentIndex >= 0; commentIndex--) {
-            let comment = comments[commentIndex];
-            commentsHTML += getCommentTemplate(comment);
-        }
+function renderComments(i) {
+    let commentsRef = "";
+
+    if (books[i].comments.length === 0) {
+    commentsRef = `<p>Gib uns als erste/r deine/r Meinung. :)</p>`;
     }
-    return commentsHTML;
+
+    for (let j = books[i].comments.length - 1; j >= 0; j--) {
+        commentsRef += getCommentTemplate(books[i].comments[j]);
+    }
+    return commentsRef;
 }
 
-// add new comment to existing comments box
-function addComment(comments) {
-    let nameInput = document.getElementById('name-${bookIndex}');
-    let messageInput = document.getElementById('comment-${bookIndex}');
-    let commentsHTML = '';
+function addComment(i) {
+    let nameInputValue = document.getElementById(`name-${i}`).value;
+    let messageInputvalue = document.getElementById(`comment-${i}`).value;
 
-        if(nameInput.value > 0 && messageInput.value > 0) {
-            comments.push(nameInput.value);
-            comments.push(messageInput.value);
+        if(nameInputValue && messageInputvalue) {
+            books[i].comments.push({
+                name: nameInputValue,
+                comment: messageInputvalue,
+            });
+
+            document.getElementById(`name-${i}`).value = '';
+            document.getElementById(`comment-${i}`).value = '';
+
+            saveToLocalStorage('books', books);
+            renderAllBooks();
+            setInitialLikes();
         } else {
-            commentsHTML = '<p>Bitte keine Felder leer lassen.</p>';
+            alert("Bitte beide Felder ausfüllen.");
         }
-    renderComments(comments);
 }
 
-// // update likes quantity change icon color
-function updatedLikes(bookIndex) {
-    
+function updatedLikes(i) {
+    let likedIcon = document.getElementById(`liked-${i}`);
+    let likesCount = document.getElementById(`likes-count-${i}`);
+
+    if (books[i].liked) {
+        books[i].likes--;
+    } else {
+        books[i].likes++;
+    }
+    books[i].liked = !books[i].liked;
+    likedIcon.classList.toggle('liked');
+
+    likesCount.textContent = books[i].likes;
+    saveToLocalStorage('books', books);
+}
+
+function setInitialLikes() {
+    for (let i = 0; i < books.length; i++) {
+        let likedIcon = document.getElementById(`liked-${i}`);
+        if (books[i].liked) {
+            likedIcon.classList.add('liked');
+        }
+    }
+}
+
+function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function loadFromLocalStorage(key) {
+    const storedData = localStorage.getItem(key);
+    if (storedData) {
+        books = JSON.parse(storedData);
+    }
 }
