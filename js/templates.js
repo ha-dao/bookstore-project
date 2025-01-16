@@ -1,5 +1,5 @@
 function bookTemplate(i) {
-  return `
+    return `
         <div class="bookcard">
             <h3>${books[i].name}</h3>
             <hr>
@@ -41,10 +41,10 @@ function bookTemplate(i) {
 }
 
 function getCommentTemplate(comment) {
-  return `
-    <tr>
-        <td>${comment.name}:</td>
-        <td>${comment.comment}</td>
-    <tr>
+    return `
+        <tr>
+            <td>${comment.name}:</td>
+            <td>${comment.comment}</td>
+        <tr>
     `;
 }

@@ -30,21 +30,20 @@ function addComment(i) {
     let nameInputValue = document.getElementById(`name-${i}`).value;
     let messageInputvalue = document.getElementById(`comment-${i}`).value;
 
-        if(nameInputValue && messageInputvalue) {
-            books[i].comments.push({
-                name: nameInputValue,
-                comment: messageInputvalue,
-            });
-
-            document.getElementById(`name-${i}`).value = '';
-            document.getElementById(`comment-${i}`).value = '';
-
-            saveToLocalStorage('books', books);
-            renderAllBooks();
-            setInitialLikes();
-        } else {
-            alert("Bitte beide Felder ausfüllen.");
-        }
+    if(nameInputValue && messageInputvalue) {
+        books[i].comments.push({
+            name: nameInputValue,
+            comment: messageInputvalue,
+        });
+        document.getElementById(`name-${i}`).value = '';
+        document.getElementById(`comment-${i}`).value = '';
+        
+        saveToLocalStorage('books', books);
+        renderAllBooks();
+        setInitialLikes();
+    } else {
+        alert("Bitte beide Felder ausfüllen.");
+    }
 }
 
 function updatedLikes(i) {
