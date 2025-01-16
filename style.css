@@ -52,6 +52,7 @@
     stroke-width: 1px;
     transition: all 300ms ease;
     padding-left: 4px;
+    cursor: pointer;
 }
 
 .basic-heart:hover {
